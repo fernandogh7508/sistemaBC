@@ -1,10 +1,10 @@
 import { initDB, getDB, saveDB } from "./storage.js";
-import { renderTable, renderForm } from "./ui.js";
+import { renderTable, renderForm ,HomeForm} from "./ui.js";
 
 const content = document.getElementById("content");
 const modal = new bootstrap.Modal(document.getElementById("formModal"));
 
-let currentPage = "clientes";
+let currentPage = "Home";
 
 initDB();
 renderPage(currentPage);
@@ -12,14 +12,16 @@ renderPage(currentPage);
 function renderPage(page) {
     currentPage = page;
     setActiveMenu(page);
-
+if(page!="Home"){
     const db = getDB();
     content.innerHTML = renderTable(
         page.toUpperCase(),
         db[page],
         Object.keys(db[page][0] || {}).filter(k => k !== "id"),
         page
-    );
+    );}else{
+         content.innerHTML =HomeForm();
+    }
 }
 
 function setActiveMenu(page) {
@@ -84,7 +86,8 @@ function saveItem() {
         item = {
             id: id || Date.now(),
             nombre: document.getElementById("nombre").value,
-            email: document.getElementById("email").value
+            email: document.getElementById("email").value,
+            contrasena: document.getElementById("contrasena").value,
         };
     }
 

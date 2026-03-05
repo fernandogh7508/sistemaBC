@@ -64,6 +64,12 @@ export function renderForm(entity, item = {}) {
                     id="email"
                     value="${item.email || ""}">
             </div>
+            <div class="mb-3">
+                <label>Contraseña</label>
+                <input class="form-control"
+                    id="contrasena"
+                    value="${item.contrasena || ""}">
+            </div>
 
             <button class="btn btn-success w-100" id="saveBtn">
                 Guardar
@@ -107,4 +113,29 @@ export function renderForm(entity, item = {}) {
             </button>
         `;
     }
+  
+
 }
+/*============================Home============================*/
+ export function HomeForm() {
+ 
+        return `
+
+            <div class="mb-3">
+                <label>Email</label>
+                <input class="form-control"
+                    id="Email">
+            </div>
+
+            <div class="mb-3">
+                <label>Password</label>
+                <input class="form-control"
+                    id="Password">
+            </div>
+
+            <button class="btn btn-success w-100" id="saveBtn">
+                Login
+            </button>
+        `;
+    }
+    
